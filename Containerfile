@@ -1,14 +1,12 @@
 FROM python:3.9-alpine
-RUN apk add --no-cache build-base cmake clang git && \
-    rm -rf /var/cache/apk/*
+RUN apk add --no-cache build-base cmake clang git
 
 RUN git clone --recursive --depth 1 https://github.com/microsoft/BitNet.git && \
     rm -rf BitNet/.git
 
 WORKDIR /BitNet
 
-RUN pip install -r requirements.txt && \
-    pip cache purge
+RUN pip install --no-cache-dir -r requirements.txt
 
 RUN python3 utils/codegen_tl2.py --model Llama3-8B-1.58-100B-tokens --BM 256,128,256,128 --BK 96,96,96,96 --bm 32,32,32,32
 
