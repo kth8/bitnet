@@ -1,4 +1,4 @@
-Simple Docker image to run [Bitnet](https://github.com/microsoft/BitNet) large language models. Uses CPU for inference. Includes TQ2_0.gguf from https://huggingface.co/brunopio/Llama3-8B-1.58-100B-tokens-GGUF by default.
+Simple Docker image to run [BitNet](https://github.com/microsoft/BitNet) large language models. Uses CPU for inference. Includes TQ2_0.gguf from https://huggingface.co/brunopio/Llama3-8B-1.58-100B-tokens-GGUF by default.
 ```
 docker run --rm ghcr.io/kth8/bitnet
 ```
