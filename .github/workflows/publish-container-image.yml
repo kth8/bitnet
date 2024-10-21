@@ -22,12 +22,12 @@ jobs:
         uses: redhat-actions/buildah-build@v2
         with:
           containerfiles: ./Containerfile
-          image: bitnet
+          image: bitnet-arm
           labels: |
             org.opencontainers.image.description=https://huggingface.co/brunopio/Llama3-8B-1.58-100B-tokens-GGUF
 
       - name: Test image
-        run:  /usr/bin/podman run --rm bitnet:latest
+        run:  /usr/bin/podman run --rm bitnet-arm:latest
 
       - name: Push Image to GHCR
         uses: redhat-actions/push-to-registry@v2
