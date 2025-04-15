@@ -13,8 +13,6 @@ RUN cmake -B build -DBITNET_X86_TL2=ON -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMP
 
 RUN cmake --build build --target llama-cli --config Release
 
-ADD https://huggingface.co/brunopio/Llama3-8B-1.58-100B-tokens-GGUF/resolve/main/Llama3-8B-1.58-100B-tokens-TQ2_0.gguf .
+COPY ggml-model-i2_s.gguf .
 
-RUN echo "2565559c82a1d03ecd1101f536c5e99418d07e55a88bd5e391ed734f6b3989ac Llama3-8B-1.58-100B-tokens-TQ2_0.gguf" | sha256sum -c
-
-CMD ["python3", "run_inference.py", "-m", "Llama3-8B-1.58-100B-tokens-TQ2_0.gguf", "-p", "The meaning to life and the universe is"]
+CMD ["python3", "run_inference.py", "-m", "ggml-model-i2_s.gguf", "-p", "The meaning to life and the universe is"]

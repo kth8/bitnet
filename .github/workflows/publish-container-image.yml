@@ -17,6 +17,19 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Install huggingface-cli
+        uses: BSFishy/pip-action@v1
+        with:
+          packages: huggingface_hub[cli]
+
+      - name: Download GGUF
+        run: |
+          huggingface-cli download microsoft/bitnet-b1.58-2B-4T-gguf --include "ggml-model-i2_s.gguf" --local-dir .
+
+      - name: Checksum GGUF
+        run: |
+          sha256sum ggml-model-i2_s.gguf
+
       - name: Build Image with Buildah
         id: build_image
         uses: redhat-actions/buildah-build@v2
@@ -24,10 +37,10 @@ jobs:
           containerfiles: ./Containerfile
           image: bitnet
           labels: |
-            org.opencontainers.image.description=https://huggingface.co/brunopio/Llama3-8B-1.58-100B-tokens-GGUF
+            org.opencontainers.image.description=https://huggingface.co/microsoft/bitnet-b1.58-2B-4T-gguf
 
       - name: Test image
-        run:  /usr/bin/podman run --rm bitnet:latest
+        run: podman run --rm bitnet:latest
 
       - name: Push Image to GHCR
         uses: redhat-actions/push-to-registry@v2
