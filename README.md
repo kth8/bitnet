@@ -1,6 +1,6 @@
 Simple Docker image to run [BitNet](https://github.com/microsoft/BitNet) large language models. Uses CPU for inference. Includes [bitnet-b1.58-2B-4T](https://huggingface.co/microsoft/bitnet-b1.58-2B-4T-gguf) by default. Requires CPU with AVX2 support from Intel Haswell/AMD Excavator or later generations.
 ```
-docker run --rm ghcr.io/kth8/bitnet
+docker run --rm -it ghcr.io/kth8/bitnet
 ```
 to use your own arguments, enter using shell:
 ```

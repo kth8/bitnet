@@ -15,4 +15,4 @@ RUN cmake --build build --target llama-cli --config Release
 
 COPY ggml-model-i2_s.gguf .
 
-CMD ["python3", "run_inference.py", "-m", "ggml-model-i2_s.gguf", "-p", "The meaning to life and the universe is"]
+CMD ["python3", "run_inference.py", "-m", "ggml-model-i2_s.gguf", "-p", "You are a helpful assistant. Always follow the user's instructions.", "-cnv"]
