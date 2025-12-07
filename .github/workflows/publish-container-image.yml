@@ -24,7 +24,7 @@ jobs:
 
       - name: Download GGUF
         run: |
-          huggingface-cli download microsoft/bitnet-b1.58-2B-4T-gguf --include "ggml-model-i2_s.gguf" --local-dir .
+          hf download microsoft/bitnet-b1.58-2B-4T-gguf --include "ggml-model-i2_s.gguf" --local-dir .
 
       - name: Checksum GGUF
         run: |
